@@ -1,0 +1,120 @@
+/* Reset base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- HEADER GENERALE --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 60px; /* più ampio su desktop */
+    background-color: #59152E;
+    border-bottom: 2px solid #ccc;
+}
+
+/* Logo + titolo */
+.logo-titolo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    width: 85px;
+    height: 85px;
+}
+
+h1 {
+    font-size: 2.4rem;
+    font-family: 'Poppins', sans-serif;
+    color: #FFF6E9;
+    letter-spacing: 1px;
+}
+
+/* Menu */
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 70px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #FFF6E9;
+    font-weight: 400;
+    font-size: 1.8rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Effetto hover */
+.menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 3px;
+    background-color: #ebd3b0;
+    transition: width 0.3s ease;
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+.menu a:hover {
+    color: #ebd3b0;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 700px) {
+    header {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        padding: 10px 25px; /* meno alto */
+        position: relative;
+    }
+
+    /* --- Struttura a 2 righe: logo+titolo sopra, menu sotto --- */
+    .logo-titolo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin-bottom: 10px;
+    }
+
+    /* Logo a sinistra, centrato verticalmente */
+    .logo-titolo .logo {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-30%);
+        width: 70px;
+        height: 70px;
+         margin-left: -10px; /* 🔹 sposta leggermente più a sinistra */
+    }
+
+    .logo-titolo h1 {
+        flex: 1;
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    /* Menu sotto, più compatto */
+    .menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 25px; /* meno spazio tra le voci */
+    }
+
+    .menu a {
+        font-size: 1.1rem;
+    }
+}

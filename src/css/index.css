@@ -1,0 +1,311 @@
+body {
+  background-color: #FFFDF7; /* sfondo chiaro pagina */
+}
+
+/* --- Titolo sezione --- */
+.titolo-sezioneVita,
+.titolo-sezioneMate {
+  text-align: center; /* centra orizzontalmente */
+  margin-top: 40px;   /* distanza dall’header */
+}
+
+.titolo-sezioneVita h2,
+.titolo-sezioneMate h2 {
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2rem;
+  color: #59152E;
+  position: relative;
+}
+
+/* linee decorative sotto i titoli */
+.titolo-sezioneVita h2::after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 3px;
+  background-color: #59152E;
+  margin: 8px auto 0 auto;
+  border-radius: 2px;
+}
+.titolo-sezioneMate h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #59152E;
+  margin: 8px auto 0 auto;
+  border-radius: 2px;
+}
+
+/* --- Responsive titolo --- */
+@media (max-width: 700px) {
+  .titolo-sezioneVita h2,
+  .titolo-sezioneMate h2 { font-size: 1.8rem; }
+  .titolo-sezioneVita h2::after,
+  .titolo-sezioneMate h2::after { width: 15px; height: 2.5px; }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* --- Rettangolo sezione --- */
+.rettangolo-sezione {
+  background-color: #FFF5E9;
+  border-radius: 20px;
+  padding: 50px 40px;
+  width: 90%;
+  margin: 30px auto 80px auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+}
+
+/* --- Blocchi interni testo+immagine --- */
+.blocco {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 50px;
+  flex-wrap: nowrap;
+}
+
+/* --- NUOVE CLASSI A SCACCHIERA --- */
+/* Testo a sinistra */
+.txt-left { order: 0; flex: 1 1 45%; }
+
+/* Immagine a destra */
+.img-right { order: 1; flex: 1 1 50%; }
+
+/* Testo a destra */
+.txt-right { order: 1; flex: 1 1 45%; }
+
+/* Immagine a sinistra */
+.img-left { order: 0; flex: 1 1 50%; }
+
+/* --- CONTENUTI TESTO --- */
+.contenuto-testo {
+  color: #59152E;
+}
+.contenuto-testo h3 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+.contenuto-testo p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* --- CONTENUTI IMMAGINE --- */
+.contenuto-immagine img {
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  object-fit: cover;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .blocco {
+    flex-direction: column;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+
+  /* Su mobile: testo sopra, immagine sotto */
+  .contenuto-testo,
+  .contenuto-immagine {
+    order: unset !important;
+    flex: 1 1 100%;
+  }
+
+  .contenuto-immagine {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .contenuto-testo h3 {
+    font-size: 1.7rem;
+  }
+
+  .contenuto-testo p {
+    font-size: 1.05rem;
+  }
+}
+
+/* --- SEZIONE MATEMATICA --- */
+.sezione-matematica {
+    background-color: #FFF6E9;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 50px auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* spinge la sotto-sezione in fondo */
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: top; /* spinge il blocco in fondo alla sezione */
+}
+
+/* --- SOTTO-SEZIONE DELLA SEZIONE MATEMATICA --- */
+.sotto-sezione-matematica {
+    background-color: #E0CCC6;
+    border-radius: 15px;
+    width: calc(100% + 18%); /* 5px più piccola orizzontalmente */
+    align-self: center; /* la centra orizzontalmente */
+    box-sizing: border-box;
+    padding: 20px;
+    margin-bottom: top; /* spinge il blocco in fondo alla sezione */
+}
+
+/* Titolo */
+.fib-titolo {
+    text-align: center;
+    color: #5C1830;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+/* Container input */
+.fib-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.fib-label {
+    color: #406241;
+    font-size: 1.1rem;
+}
+
+#fib-num {
+    width: 80px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+/* Bottone calcola */
+#fib-calc {
+    display: block;
+    margin: 0 auto 20px auto;
+    padding: 10px 20px;
+    background-color: #AC4D6E;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#fib-calc:hover {
+    background-color: #9b3f60;
+}
+
+/* Risultati Fibonacci */
+#fib-risultati {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.fib-num {
+    background-color: #FFFDF7;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #5C1830;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
+}
+
+.fib-num.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- SEZIONE MINI-GIOCHI --- */
+.mini-giochi-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+/* Ogni quadrato */
+.mini-gioco {
+    background-color: #E0CCC6;
+    border-radius: 25px;
+    width: 420px;
+    height: 380px;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mini-gioco:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+/* Titolo */
+.mini-titolo {
+    color: #5C1830;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+/* Descrizione */
+.mini-descrizione {
+    color: #406241;
+    font-size: 1.15rem;
+    text-align: center;
+    line-height: 1.6;
+    margin: 20px 0;
+}
+
+/* Bottone */
+.mini-bottone {
+    background-color: #AC4D6E;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.mini-bottone:hover {
+    background-color: #9b3f60;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .mini-gioco {
+        width: 95%;
+        height: auto;
+        padding: 25px;
+    }
+
+    .mini-titolo { font-size: 1.5rem; }
+    .mini-descrizione { font-size: 1rem; }
+    .mini-bottone { font-size: 1rem; }
+}
