@@ -125,7 +125,7 @@
             <p class="mini-descrizione">
                 Metti alla prova la tua conoscenza sulla sequenza di Fibonacci con un divertente quiz interattivo!
             </p>
-            <button class="mini-bottone">INIZIA SFIDA</button>
+            <button class="mini-bottone" onclick="location.href='#disegnaRettangolo'">INIZIA SFIDA</button>
         </div>
 
         <!-- Quadrato 2 -->
@@ -134,26 +134,51 @@
             <p class="mini-descrizione">
                 Riesci a indovinare i numeri mancanti della sequenza? Sfida te stesso e scopri il risultato!
             </p>
-            <button class="mini-bottone">INIZIA SFIDA</button>
+            <button class="mini-bottone" onclick="location.href='#indovinaSequenza'">INIZIA SFIDA</button>
         </div>
-
     </div>
 
 </div>
 <!-- ******** GIOCO RETTANGOLO AUREO ******** -->
-<div class="rettangolo-sezione">
+<div id="disegnaRettangolo" class="rettangolo-sezione">
 
 </div>
 
 <!-- ******** GIOCO INDOVINA LA SEQUENZA ******** -->
-<div class="rettangolo-sezione">
+<div id="indovinaSequenza" class="rettangolo-sezione">
+    <div class="gioco-indovina-container">
+        <!-- Colonna sinistra: inserimento nomi giocatori -->
+        <div class="giocatori-input">
+            <h3>Inserisci i nomi dei giocatori</h3>
 
+            <div class="giocatore">
+                <label for="giocatore1">Giocatore 1:</label>
+                <input type="text" id="giocatore1" placeholder="Nome giocatore 1">
+            </div>
+
+            <div class="giocatore">
+                <label for="giocatore2">Giocatore 2:</label>
+                <input type="text" id="giocatore2" placeholder="Nome giocatore 2">
+            </div>
+
+            <button id="inizia-gioco">Inizia Gioco</button>
+        </div>
+
+        <!-- Colonna destra (verrà popolata in seguito con la logica del gioco) -->
+        <div class="area-gioco" id="area-gioco">
+            <!-- Qui apparirà la sequenza o le istruzioni -->
+        </div>
+    </div>
 </div>
 
 
+
 <div id="footer-placeholder"></div>
+
 <script src="/src/js/include.js"></script>
+<script src="/src/js/giocoIndovina.js"></script>
 <script src="/src/js/sequenzaFib.js"></script>
+
 
 </body>
 </html>
