@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>αFibonacci</title>
+    <link rel="stylesheet" href="src/css/header.css">
+    <link rel="stylesheet" href="src/css/footer.css">
+    <link rel="stylesheet" href="src/css/index.css">
+</head>
+<body>
+<?php 
+    include(__DIR__ . "/src/pages/header.html");
+?>
+
+<!-- ===== SEZIONE VITA ===== -->
+<div class="titolo-sezioneVita" id="vita">
+    <h2>Vita</h2>
+</div>
+
+<div class="rettangolo-sezione">
+    <!-- Primo blocco: testo (sinistra) --- immagine (destra) -->
+    <div class="blocco">
+        <div class="contenuto-testo txt-left">
+            <h3>Le origini di Fibonacci</h3>
+            <p>
+                Leonardo Pisano, conosciuto come Fibonacci, nacque a Pisa nel 1170.
+                Viaggiò molto nel Mediterraneo e apprese il sistema di numerazione indo-arabico,
+                che introdusse poi in Europa.
+            </p>
+        </div>
+
+        <div class="contenuto-immagine img-right">
+            <img src="src/resources/img/img1.png" alt="Ritratto di Fibonacci">
+        </div>
+    </div>
+
+    <!-- Secondo blocco: immagine (sinistra) --- testo (destra) -->
+    <div class="blocco">
+        <div class="contenuto-immagine img-left">
+            <img src="src/resources/img/img1.png" alt="Successione di Fibonacci">  <!-- sostituire con img -->
+        </div>
+
+        <div class="contenuto-testo txt-right">
+            <h3>Le sue scoperte</h3>
+            <p>
+                Nel suo libro <em>Liber Abaci</em>, pubblicato nel 1202,
+                Fibonacci spiegò l’uso delle cifre arabe e introdusse la celebre successione
+                che porta il suo nome.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== SEZIONE MATEMATICA ===== -->
+<div class="titolo-sezioneMate" id="matematica">
+    <h2>Matematica</h2>
+</div>
+
+<div class="rettangolo-sezione">
+    <!-- Terzo blocco: testo (sinistra) --- immagine (destra) -->
+    <!-- per mantenere l'effetto a scacchiera rispetto ai blocchi sopra, qui ricomincio con testo a sinistra -->
+    <div class="blocco">
+        <div class="contenuto-testo txt-left">
+            <h3>Approfondimenti matematici</h3>
+            <p>
+                La successione di Fibonacci è collegata al rapporto aureo e a molte proprietà
+                combinatorie e geometriche interessanti.La successione di Fibonacci è collegata al rapporto aureo e a molte proprietà
+                combinatorie e geometriche interessanti.La successione di Fibonacci è collegata al rapporto aureo e a molte proprietà
+                combinatorie e geometriche interessanti.La successione di Fibonacci è collegata al rapporto aureo e a molte proprietà
+                combinatorie e geometriche interessanti.
+            </p>
+        </div>
+
+        <div class="contenuto-immagine img-right">
+            <img src="src/resources/img/img1.png" alt="Diagramma matematico">
+        </div>
+    </div>
+
+    <!-- Quarto blocco: immagine (sinistra) --- testo (destra) -->
+    <div class="blocco">
+        <div class="contenuto-immagine img-left">
+            <img src="src/resources/img/img1.png" alt="Applicazioni della successione">
+        </div>
+
+        <div class="contenuto-testo txt-right">
+            <h3>Applicazioni</h3>
+            <p>
+                LaLa successione di Fibonacci è collegata al rapporto aureo e a molte proprietà
+                combinatorie e geometriche interessanti.La successione di Fibonacci è collegata al rapporto aureo e a molte proprietà
+                combinatorie e geometriche interessanti.La successione di Fibonacci è collegata al rapporto aureo e a molte proprietà
+                combinatorie e geometriche interessanti. successione appare in natura, in algoritmi e in applicazioni grafiche: è uno strumento molto versatile.
+            </p>
+        </div>
+    </div>
+    <section class="sezione-matematica">
+        <div class="sotto-sezione-matematica">
+            <!-- Titolo -->
+            <h3 class="fib-titolo">Prova il calcolatore della sequenza di Fibonacci</h3>
+
+            <!-- Input N -->
+            <div class="fib-input-container">
+                <label for="fib-num" class="fib-label">Quanti numeri vuoi visualizzare?</label>
+                <input type="number" id="fib-num" min="1" placeholder="Inserisci un numero" />
+            </div>
+
+            <!-- Bottone calcola -->
+            <button id="fib-calc">CALCOLA</button>
+
+            <!-- Contenitore risultati -->
+            <div id="fib-risultati"></div>
+        </div>
+    </section>
+</div>
+<!-- Sezione MINI-GIOCHI!!! -->
+
+<div class="titolo-sezioneMate" id="Mini-Giochi">
+    <h2>Mini-Giochi</h2>
+</div>
+
+<div class="rettangolo-sezione">
+    <div class="mini-giochi-container">
+
+        <!-- Quadrato 1 -->
+        <div class="mini-gioco">
+            <h3 class="mini-titolo">Crea il rettangolo Aureo</h3>
+            <p class="mini-descrizione">
+                Metti alla prova la tua conoscenza sulla sequenza di Fibonacci con un divertente quiz interattivo!
+            </p>
+            <button class="mini-bottone" onclick="location.href='#disegnaRettangolo'">INIZIA SFIDA</button>
+        </div>
+
+        <!-- Quadrato 2 -->
+        <div class="mini-gioco">
+            <h3 class="mini-titolo">Indovina la sequenza</h3>
+            <p class="mini-descrizione">
+                Riesci a indovinare i numeri mancanti della sequenza? Sfida te stesso e scopri il risultato!
+            </p>
+            <button class="mini-bottone" onclick="location.href='#indovinaSequenza'">INIZIA SFIDA</button>
+        </div>
+    </div>
+
+</div>
+<!-- ******** GIOCO RETTANGOLO AUREO ******** -->
+<div id="disegnaRettangolo" class="rettangolo-sezione">
+
+</div>
+
+<!-- ******** GIOCO INDOVINA LA SEQUENZA ******** -->
+<div id="indovinaSequenza" class="rettangolo-sezione">
+    <div class="gioco-indovina-container">
+        <!-- Colonna sinistra: inserimento nomi giocatori -->
+        <div class="giocatori-input">
+            <h3>Inserisci i nomi dei giocatori</h3>
+
+            <div class="giocatore">
+                <label for="giocatore1">Giocatore 1:</label>
+                <input type="text" id="giocatore1" placeholder="Nome giocatore 1">
+            </div>
+
+            <div class="giocatore">
+                <label for="giocatore2">Giocatore 2:</label>
+                <input type="text" id="giocatore2" placeholder="Nome giocatore 2">
+            </div>
+
+            <button id="inizia-gioco">Inizia Gioco</button>
+        </div>
+
+        <!-- Colonna destra (verrà popolata in seguito con la logica del gioco) -->
+        <div class="area-gioco" id="area-gioco">
+            <!-- Qui apparirà la sequenza o le istruzioni -->
+        </div>
+    </div>
+</div>
+
+
+
+<?php 
+include(__DIR__ . "/src/pages/footer.html");
+?>
+
+<script src="src/js/giocoIndovina.js"></script>
+<script src="src/js/sequenzaFib.js"></script>
+
+
+</body>
+</html>
