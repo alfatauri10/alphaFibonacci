@@ -1,0 +1,62 @@
+<div class="titolo-sezioneMate" id="Mini-Giochi">
+    <h2>Mini-Giochi</h2>
+</div>
+
+<div class="rettangolo-sezione">
+    <div class="mini-giochi-container">
+
+        <!-- Quadrato 1 -->
+        <div class="mini-gioco">
+            <h3 class="mini-titolo">Crea il rettangolo Aureo</h3>
+            <p class="mini-descrizione">
+                Metti alla prova la tua conoscenza trascinando i quadrati (1, 1, 2, 3, 5) per comporre il rettangolo aureo.
+            </p>
+            <button class="mini-bottone" id="start-game-rettangolo">INIZIA SFIDA</button>
+        </div>
+
+        <!-- Quadrato 2 -->
+        <div class="mini-gioco">
+            <h3 class="mini-titolo">Indovina la sequenza</h3>
+            <p class="mini-descrizione">
+                Riesci a indovinare i numeri mancanti della sequenza? Sfida te stesso e scopri il risultato!
+            </p>
+            <button class="mini-bottone" onclick="location.href='#indovinaSequenza'">INIZIA SFIDA</button>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- ******** GIOCO RETTANGOLO AUREO ******** -->
+<?php include(__DIR__ . "/src/pages/giocoRettangolo.html"); ?>
+
+
+<!-- ******** GIOCO INDOVINA LA SEQUENZA ******** -->
+<!-- TODO: includi qui la pagina giocoIndovina.html -->
+
+<div id="indovinaSequenza" class="rettangolo-sezione">
+    <div class="gioco-indovina-container">
+        <!-- Colonna sinistra: inserimento nomi giocatori -->
+        <div class="giocatori-input">
+            <h3>Inserisci i nomi dei giocatori</h3>
+
+            <div class="giocatore">
+                <label for="giocatore1">Giocatore 1:</label>
+                <input type="text" id="giocatore1" placeholder="Nome giocatore 1">
+            </div>
+
+            <div class="giocatore">
+                <label for="giocatore2">Giocatore 2:</label>
+                <input type="text" id="giocatore2" placeholder="Nome giocatore 2">
+            </div>
+
+            <button id="inizia-gioco">Inizia Gioco</button>
+        </div>
+
+        <!-- Colonna destra (verrà popolata in seguito con la logica del gioco) -->
+        <div class="area-gioco" id="area-gioco">
+            <!-- Qui apparirà la sequenza o le istruzioni -->
+        </div>
+    </div>
+</div>
+

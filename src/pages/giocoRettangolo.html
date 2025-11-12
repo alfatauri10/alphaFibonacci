@@ -1,0 +1,29 @@
+<!-- Gioco: Disegna il Rettangolo Aureo -->
+
+<div id="gioco-rettangolo" class="rettangolo-sezione" style="display:none;">
+
+    <!-- importa lo stile del gioco  -->
+    <link rel="stylesheet" href="src/css/giocoRettangolo.css">
+
+
+    <div id="game-area">
+        <h3 class="titolo-gioco">Disegna il Rettangolo Aureo</h3>
+        <p class="istruzioni">
+            Trascina i quadrati in ordine (1, 1, 2, 3, 5) per costruire il rettangolo aureo.
+            Puoi muovere il successivo solo se quello corrente è nella posizione giusta.
+        </p>
+
+        <div id="canvas-gioco">
+            <!-- I 5 quadrati -->
+            <div id="square1" class="square s1" draggable="true">1</div>
+            <div id="square2" class="square s2" draggable="true">1</div>
+            <div id="square3" class="square s3" draggable="true">2</div>
+            <div id="square4" class="square s4" draggable="true">3</div>
+            <div id="square5" class="square s5" draggable="true">5</div>
+        </div>
+
+        <div id="msg"></div>
+    </div>
+
+    <script src="src/js/giocoRettangolo.js"></script>
+</div>
