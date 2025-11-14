@@ -28,7 +28,7 @@
 
         <script src="src/js/giocoIndovina.js"></script>
         <script src="src/js/sequenzaFib.js"></script>
-        <script src="src/js/showHideGiocoRettangolo.js"></script>
+        <script src="src/js/showHideGiochi.js"></script>
 
 
     </body>

@@ -1,1 +1,26 @@
-<!-- Gioco: Indovina la sequenza -->
+<div id="indovinaSequenza" class="rettangolo-sezione" style="display:none;">
+    <div class="gioco-indovina-container">
+        <!-- Colonna sinistra: inserimento nomi giocatori -->
+        <div class="giocatori-input">
+            <h3>Inserisci i nomi dei giocatori</h3>
+
+            <div class="giocatore">
+                <label for="giocatore1">Giocatore 1:</label>
+                <input type="text" id="giocatore1" placeholder="Nome giocatore 1">
+            </div>
+
+            <div class="giocatore">
+                <label for="giocatore2">Giocatore 2:</label>
+                <input type="text" id="giocatore2" placeholder="Nome giocatore 2">
+            </div>
+
+            <button id="inizia-gioco">Inizia Gioco</button>
+        </div>
+
+        <!-- Colonna destra (verrà popolata in seguito con la logica del gioco) -->
+        <div class="area-gioco" id="area-gioco">
+            <!-- Qui apparirà la sequenza o le istruzioni -->
+        </div>
+    </div>
+    <script src="src/js/giocoIndovina.js"></script>
+</div>
