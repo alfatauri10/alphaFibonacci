@@ -66,7 +66,7 @@ html {
 .blocco {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 40px;
   margin-bottom: 50px;
   flex-wrap: nowrap;
@@ -74,16 +74,16 @@ html {
 
 /* --- NUOVE CLASSI A SCACCHIERA --- */
 /* Testo a sinistra */
-.txt-left { order: 0; flex: 1 1 45%; }
+.txt-left { order: 0; flex: 1 1 40%; }
 
 /* Immagine a destra */
-.img-right { order: 1; flex: 1 1 50%; }
+.img-right { order: 1; flex: 1 1 40%; }
 
 /* Testo a destra */
-.txt-right { order: 1; flex: 1 1 45%; }
+.txt-right { order: 1; flex: 1 1 40%; }
 
 /* Immagine a sinistra */
-.img-left { order: 0; flex: 1 1 50%; }
+.img-left { order: 0; flex: 1 1 40%; }
 
 /* --- CONTENUTI TESTO --- */
 .contenuto-testo {

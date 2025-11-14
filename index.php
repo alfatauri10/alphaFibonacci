@@ -23,7 +23,7 @@
         <?php include(__DIR__ . "/src/pages/giochi.html"); ?>
 
         <!-- ===== SEZIONE FIB ===== -->
-        <?php include(__DIR__ . "/src/pages/fib.html"); ?>
+
 
 
         <?php include(__DIR__ . "/src/pages/footer.html"); ?>
