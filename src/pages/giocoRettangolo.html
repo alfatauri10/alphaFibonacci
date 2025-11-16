@@ -7,15 +7,19 @@
     <h3 class="titolo-gioco">Disegna il Rettangolo Aureo</h3>
     <p class="istruzioni">Trascina i quadrati nell’ordine corretto e costruisci il rettangolo aureo.</p>
 
-<!-- ORIENTAMENTO (si sblocca dopo Q2) -->
+    <!-- ORIENTAMENTO (si sblocca dopo Q2) -->
     <div id="orientamento" style="display:none;">
         <p>Scegli l’orientamento:</p>
         <button data-dir="antiorario" class="btn-orientamento">Antiorario</button>
         <button data-dir="orario" class="btn-orientamento">Orario</button>
     </div>
 
-<!-- AREA DI GIOCO -->
+    <!-- AREA DI GIOCO -->
     <div id="canvas-gioco">
+
+        <!-- SVG per la spirale aurea, sopra ai quadrati -->
+        <svg id="spirale-svg" width="800" height="500"></svg>
+
         <div id="q1" class="square s1" draggable="true">1</div>
         <div id="q2" class="square s2" draggable="true">1</div>
         <div id="q3" class="square s3" draggable="true">2</div>
@@ -23,11 +27,11 @@
         <div id="q5" class="square s5" draggable="true">5</div>
     </div>
 
+    <button id="btn-reset-gioco" class="btn-stile-gioco">RICOMINCIA</button>
+    <button id="btn-riposiziona" class="btn-stile-gioco">RIPOSIZIONA QUADRATI</button>
+
     <div id="msg"></div>
 
 </div>
 
-
 <script src="src/js/giocoRettangolo.js"></script>
-
-

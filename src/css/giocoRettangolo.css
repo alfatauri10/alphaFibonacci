@@ -44,6 +44,18 @@
     overflow: hidden;
 }
 
+/* SVG SPIRALE SOPRA AI QUADRATI */
+#spirale-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 800px;
+    height: 500px;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 10;
+}
+
 /* ================================
    QUADRATI TRASCINABILI
    ================================ */
@@ -120,4 +132,31 @@
 .square.fixed {
     border: 3px solid #4e7c48;
     transform: none !important;
+}
+
+.square.reposition {
+    cursor: move !important;
+    opacity: 1 !important;
+    border: 3px dashed #4e7c48 !important;
+}
+
+/* BOTTONI STILE GIOCO */
+.btn-stile-gioco {
+    background: #AC4D6E;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    transition: all 0.2s ease;
+    margin-top: 15px;
+}
+
+.btn-stile-gioco:hover {
+    background: #923F5C;
+    transform: scale(1.05);
 }

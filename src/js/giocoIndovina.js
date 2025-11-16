@@ -17,11 +17,14 @@ document.getElementById("inizia-gioco").addEventListener("click", () => {
     let turno = 1;
     let gameOver = false;
 
-    // === TIMER PER TURNO ===
-    let timerInterval = null;
-    let deadline = null; // timestamp di scadenza del turno
+    // Numero corretto atteso per il turno corrente
+    let nextAtteso = sequenza[sequenza.length - 1] + sequenza[sequenza.length - 2];
 
-    // Elemento grafico del timer in alto a destra
+    // === TIMER PER TURNO ===
+    let timer = 30;
+    let interval = null;
+
+    // Timer grafico in alto a destra
     const timerDiv = document.createElement("div");
     timerDiv.id = "timer-turno";
     timerDiv.style.position = "absolute";
@@ -30,53 +33,80 @@ document.getElementById("inizia-gioco").addEventListener("click", () => {
     timerDiv.style.fontSize = "20px";
     timerDiv.style.fontWeight = "bold";
     timerDiv.style.color = "#AC4D6E";
-    timerDiv.textContent = "⏱ 30s";
+    timerDiv.textContent = `⏱ ${timer}s`;
     area.appendChild(timerDiv);
 
-    function aggiornaTimer() {
-        if (gameOver || !deadline) return;
+    function startTimer() {
+        clearInterval(interval);
+        timer = 30;
+        timerDiv.textContent = `⏱ ${timer}s`;
 
-        const msLeft = deadline - Date.now();
+        interval = setInterval(() => {
+            if (gameOver) {
+                clearInterval(interval);
+                return;
+            }
 
-        if (msLeft <= 0) {
-            clearInterval(timerInterval);
-            timerDiv.textContent = "⏱ 0s";
+            timer--;
 
-            if (gameOver) return;
+            if (timer <= 0) {
+                timer = 0;
+                timerDiv.textContent = `⏱ 0s`;
+                clearInterval(interval);
 
-            // Tempo scaduto: perde il giocatore di turno
-            gameOver = true;
+                if (!gameOver) {
+                    const nomePerde = turno === 1 ? nome1 : nome2;
+                    finePartitaTempo(nomePerde);
+                }
+                return;
+            }
 
-            const nomePerde = turno === 1 ? nome1 : nome2;
-            const nomeVince = turno === 1 ? nome2 : nome1;
-            const next = sequenza[sequenza.length - 1] + sequenza[sequenza.length - 2];
-
-            area.innerHTML = `
-                <h2 style="text-align:center;color:#5C1830;">⏳ Tempo scaduto!</h2>
-                <p style="text-align:center;">${nomePerde} non ha risposto entro 30 secondi.</p>
-                <p style="text-align:center;">Il numero corretto era <strong>${next}</strong>.</p>
-                <h3 style="text-align:center;color:#406241;">Vince ${nomeVince}! 🎉</h3>
-                <button id="rigioca" style="
-                    margin:20px auto;display:block;
-                    padding:10px 18px;border:none;
-                    color:white;background:#AC4D6E;
-                    border-radius:8px;cursor:pointer;">Rigioca</button>
-            `;
-
-            document.getElementById("rigioca").onclick = () => location.reload();
-            return;
-        }
-
-        const secondsLeft = Math.ceil(msLeft / 1000);
-        timerDiv.textContent = `⏱ ${secondsLeft}s`;
+            timerDiv.textContent = `⏱ ${timer}s`;
+        }, 1000);
     }
 
-    function startTimer() {
-        clearInterval(timerInterval);
-        // 30 secondi da ORA
-        deadline = Date.now() + 30000;
-        aggiornaTimer();
-        timerInterval = setInterval(aggiornaTimer, 250);
+    function finePartitaTempo(nomePerde) {
+        if (gameOver) return;
+        gameOver = true;
+
+        area.innerHTML = `
+            <h2 style="text-align:center;color:#5C1830;">⏳ Tempo scaduto!</h2>
+            <p style="text-align:center;">${nomePerde} non ha risposto entro 30 secondi.</p>
+            <p style="text-align:center;">Il numero corretto era <strong>${nextAtteso}</strong>.</p>
+            <h3 style="text-align:center;color:#406241;">Vince ${nomePerde === nome1 ? nome2 : nome1}! 🎉</h3>
+            <button id="rigioca" style="
+                margin:20px auto;display:block;
+                padding:10px 18px;border:none;
+                color:white;background:#AC4D6E;
+                border-radius:8px;cursor:pointer;">Rigioca</button>
+        `;
+
+        document.getElementById("rigioca").onclick = () => {
+            document.getElementById("indovinaSequenza").style.display = "block";
+            document.getElementById("area-gioco").innerHTML = "";
+        };
+    }
+
+    function finePartitaErrore(nomePerde) {
+        if (gameOver) return;
+        gameOver = true;
+        clearInterval(interval);
+
+        area.innerHTML = `
+            <h2 style="text-align:center;color:#5C1830;">❌ ${nomePerde} ha sbagliato!</h2>
+            <p style="text-align:center;">Il numero corretto era <strong>${nextAtteso}</strong>.</p>
+            <h3 style="text-align:center;color:#406241;">Vince ${nomePerde === nome1 ? nome2 : nome1} 🎉</h3>
+            <button id="rigioca" style="
+                margin:20px auto;display:block;
+                padding:10px 18px;border:none;
+                color:white;background:#AC4D6E;
+                border-radius:8px;cursor:pointer;">Rigioca</button>
+        `;
+
+        document.getElementById("rigioca").onclick = () => {
+            document.getElementById("indovinaSequenza").style.display = "block";
+            document.getElementById("area-gioco").innerHTML = "";
+        };
     }
 
     // Titolo centrato
@@ -154,11 +184,11 @@ document.getElementById("inizia-gioco").addEventListener("click", () => {
 
     mostraSequenza();
 
-    // All'inizio attivo box1 e avvio timer del primo turno
+    // All'inizio attivo box1
     attivaTurno(1);
     startTimer();
 
-    // Funzione turnazione (come prima, con focus)
+    // Funzione turnazione (questa resta identica)
     function attivaTurno(n) {
         if (n === 1) {
             box1.classList.add("turno-attivo");
@@ -182,7 +212,7 @@ document.getElementById("inizia-gioco").addEventListener("click", () => {
         }
     }
 
-    // Logica dei controlli (identica, con aggiunta gestione timer)
+    // Logica dei controlli (stessa logica, ma usa nextAtteso)
     function controlla(box, nome) {
 
         if (gameOver) return;
@@ -196,13 +226,15 @@ document.getElementById("inizia-gioco").addEventListener("click", () => {
             return;
         }
 
-        const next = sequenza[sequenza.length - 1] + sequenza[sequenza.length - 2];
-
-        if (numero === next) {
+        if (numero === nextAtteso) {
+            // risposta corretta
             sequenza.push(numero);
             mostraSequenza();
 
-            // Cambio turno
+            // aggiorna il prossimo numero atteso
+            nextAtteso = sequenza[sequenza.length - 1] + sequenza[sequenza.length - 2];
+
+            // cambio turno
             turno = turno === 1 ? 2 : 1;
             msg.style.color = "#406241";
 
@@ -210,26 +242,11 @@ document.getElementById("inizia-gioco").addEventListener("click", () => {
             msg.textContent = `${prossimoNome}, tocca a te!`;
 
             attivaTurno(turno);
-            startTimer(); // 🔁 ad ogni risposta corretta il timer riparte da 30s
+            startTimer(); // riparte da 30
 
         } else {
-            gameOver = true;
-            clearInterval(timerInterval);
-
-            area.innerHTML = `
-            <h2 style="text-align:center;color:#5C1830;">❌ ${nome} ha sbagliato!</h2>
-            <p style="text-align:center;">Il numero corretto era <strong>${next}</strong></p>
-            <h3 style="text-align:center;color:#406241;">Vince ${
-                nome === nome1 ? nome2 : nome1
-            } 🎉</h3>
-            <button id="rigioca" style="
-                margin:20px auto;display:block;
-                padding:10px 18px;border:none;
-                color:white;background:#AC4D6E;
-                border-radius:8px;cursor:pointer;">Rigioca</button>
-            `;
-
-            document.getElementById("rigioca").onclick = () => location.reload();
+            // risposta sbagliata
+            finePartitaErrore(nome);
         }
 
         input.value = "";
@@ -245,7 +262,7 @@ document.getElementById("inizia-gioco").addEventListener("click", () => {
     btn1.addEventListener("click", () => controlla(box1, nome1));
     btn2.addEventListener("click", () => controlla(box2, nome2));
 
-    // ENTER = click sul proprio bottone (senza logiche extra)
+    // ENTER = click sul proprio bottone
     input1.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
             e.preventDefault();
