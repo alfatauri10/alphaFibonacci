@@ -7,7 +7,7 @@ const msg = document.getElementById("msg");
 
 let ordine = 1;
 let orientamento = null;
-const eps = 40;
+const eps = 15;
 let inRepositionMode = false;
 
 // riferimenti ai quadrati
