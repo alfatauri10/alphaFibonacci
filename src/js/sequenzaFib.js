@@ -34,3 +34,9 @@ document.getElementById('fib-calc').addEventListener('click', () => {
             }, index * 300); // 300ms tra un numero e l'altro
         });
     });
+
+document.getElementById('fib-num').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        document.getElementById('fib-calc').click();
+    }
+});

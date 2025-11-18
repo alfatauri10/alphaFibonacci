@@ -1,31 +1,29 @@
-document.getElementById("inizia-gioco").addEventListener("click", () => {
+document.getElementById("inizia-gioco").onclick = () => { // avvia il gioco al click
 
-    const nome1 = document.getElementById("giocatore1").value.trim();
-    const nome2 = document.getElementById("giocatore2").value.trim();
-    const area = document.getElementById("area-gioco");
+    const nome1 = document.getElementById("giocatore1").value.trim(); // nome giocatore 1
+    const nome2 = document.getElementById("giocatore2").value.trim(); // nome giocatore 2
+    const area = document.getElementById("area-gioco"); // contenitore del gioco
 
-    if (!nome1 || !nome2) {
+    if (!nome1 || !nome2) { // se manca un nome
         alert("Inserisci entrambi i nomi!");
         return;
     }
 
-    // RESET AREA
+    // PULISCO AREA DI GIOCO
     area.innerHTML = "";
 
-    // Stato del gioco
-    let sequenza = [1, 1];
-    let turno = 1;
-    let gameOver = false;
+    // ===== STATO DI GIOCO =====
+    let sequenza = [1, 1];                // sequenza iniziale di Fibonacci
+    let turno = 1;                        // 1 = nome1, 2 = nome2
+    let nextAtteso = 2;                   // primo numero atteso (1+1)
+    let gameOver = false;                 // flag fine partita
 
-    // Numero corretto atteso per il turno corrente
-    let nextAtteso = sequenza[sequenza.length - 1] + sequenza[sequenza.length - 2];
+    // ===== TIMER UNICO =====
+    let tempoRimanente = 30;              // secondi per turno
+    let intervalId = null;                // id dell'unico setInterval
 
-    // === TIMER PER TURNO ===
-    let timer = 30;
-    let interval = null;
-
-    // Timer grafico in alto a destra
-    const timerDiv = document.createElement("div");
+    // TIMER GRAFICO
+    const timerDiv = document.createElement("div"); // contenitore timer
     timerDiv.id = "timer-turno";
     timerDiv.style.position = "absolute";
     timerDiv.style.top = "10px";
@@ -33,74 +31,87 @@ document.getElementById("inizia-gioco").addEventListener("click", () => {
     timerDiv.style.fontSize = "20px";
     timerDiv.style.fontWeight = "bold";
     timerDiv.style.color = "#AC4D6E";
-    timerDiv.textContent = `⏱ ${timer}s`;
     area.appendChild(timerDiv);
 
-    function startTimer() {
-        clearInterval(interval);
-        timer = 30;
-        timerDiv.textContent = `⏱ ${timer}s`;
+    function aggiornaTimerUI() { // aggiorna testo timer
+        timerDiv.textContent = `⏱ ${tempoRimanente}s`;
+    }
 
-        interval = setInterval(() => {
-            if (gameOver) {
-                clearInterval(interval);
+    function stopTimer() { // ferma il timer se esiste
+        if (intervalId !== null) {
+            clearInterval(intervalId);
+            intervalId = null;
+        }
+    }
+
+    function avviaTimerNuovoTurno() { // reset + avvio timer per il turno corrente
+        stopTimer();                  // mi assicuro che non ci siano timer vecchi
+        tempoRimanente = 30;          // riparto da 30
+        aggiornaTimerUI();            // aggiorno la UI
+
+        intervalId = setInterval(() => {   // unico setInterval della partita
+            if (gameOver) {                // se il gioco è finito
+                stopTimer();               // ferma tutto
                 return;
             }
 
-            timer--;
+            tempoRimanente--;              // scala un secondo
+            aggiornaTimerUI();             // aggiorna grafica
 
-            if (timer <= 0) {
-                timer = 0;
-                timerDiv.textContent = `⏱ 0s`;
-                clearInterval(interval);
-
-                if (!gameOver) {
-                    const nomePerde = turno === 1 ? nome1 : nome2;
-                    finePartitaTempo(nomePerde);
-                }
-                return;
+            if (tempoRimanente <= 0) {     // tempo scaduto
+                stopTimer();               // blocca il timer
+                const nomePerde = turno === 1 ? nome1 : nome2; // chi doveva giocare
+                finePartitaTempo(nomePerde);                    // fine partita per tempo
             }
-
-            timerDiv.textContent = `⏱ ${timer}s`;
         }, 1000);
     }
 
-    function finePartitaTempo(nomePerde) {
+    // ===== SCHERMATE DI FINE PARTITA =====
+    function finePartitaTempo(nomePerde) { // perdita per tempo
         if (gameOver) return;
         gameOver = true;
+        stopTimer();
+
+        const nomeVince = nomePerde === nome1 ? nome2 : nome1;
 
         area.innerHTML = `
             <h2 style="text-align:center;color:#5C1830;">⏳ Tempo scaduto!</h2>
-            <p style="text-align:center;">${nomePerde} non ha risposto entro 30 secondi.</p>
+            <p style="text-align:center;">${nomePerde} non ha risposto entro il tempo.</p>
             <p style="text-align:center;">Il numero corretto era <strong>${nextAtteso}</strong>.</p>
-            <h3 style="text-align:center;color:#406241;">Vince ${nomePerde === nome1 ? nome2 : nome1}! 🎉</h3>
+            <h3 style="text-align:center;color:#406241;">Vince ${nomeVince}! 🎉</h3>
             <button id="rigioca" style="
                 margin:20px auto;display:block;
                 padding:10px 18px;border:none;
                 color:white;background:#AC4D6E;
-                border-radius:8px;cursor:pointer;">Rigioca</button>
+                border-radius:8px;cursor:pointer;">
+                Rigioca
+            </button>
         `;
 
         document.getElementById("rigioca").onclick = () => {
-            document.getElementById("indovinaSequenza").style.display = "block";
-            document.getElementById("area-gioco").innerHTML = "";
+            document.getElementById("indovinaSequenza").style.display = "block"; // torna alla schermata iniziale
+            document.getElementById("area-gioco").innerHTML = "";               // svuota area
         };
     }
 
-    function finePartitaErrore(nomePerde) {
+    function finePartitaErrore(nomePerde) { // perdita per numero sbagliato
         if (gameOver) return;
         gameOver = true;
-        clearInterval(interval);
+        stopTimer();
+
+        const nomeVince = nomePerde === nome1 ? nome2 : nome1;
 
         area.innerHTML = `
             <h2 style="text-align:center;color:#5C1830;">❌ ${nomePerde} ha sbagliato!</h2>
             <p style="text-align:center;">Il numero corretto era <strong>${nextAtteso}</strong>.</p>
-            <h3 style="text-align:center;color:#406241;">Vince ${nomePerde === nome1 ? nome2 : nome1} 🎉</h3>
+            <h3 style="text-align:center;color:#406241;">Vince ${nomeVince}! 🎉</h3>
             <button id="rigioca" style="
                 margin:20px auto;display:block;
                 padding:10px 18px;border:none;
                 color:white;background:#AC4D6E;
-                border-radius:8px;cursor:pointer;">Rigioca</button>
+                border-radius:8px;cursor:pointer;">
+                Rigioca
+            </button>
         `;
 
         document.getElementById("rigioca").onclick = () => {
@@ -109,7 +120,7 @@ document.getElementById("inizia-gioco").addEventListener("click", () => {
         };
     }
 
-    // Titolo centrato
+    // ===== UI GIOCO =====
     const titolo = document.createElement("h3");
     titolo.style.color = "#5C1830";
     titolo.style.textAlign = "center";
@@ -117,17 +128,14 @@ document.getElementById("inizia-gioco").addEventListener("click", () => {
     titolo.textContent = `${nome1} VS ${nome2}`;
     area.appendChild(titolo);
 
-    // Messaggio
     const msg = document.createElement("p");
     msg.style.color = "#406241";
     msg.textContent = `${nome1} inizia! Inserisci il prossimo numero:`;
     area.appendChild(msg);
 
-    // Doppio input
     const container = document.createElement("div");
     container.className = "doppio-input-container";
 
-    // --- CREAZIONE BOX GIOCATORE ---
     function creaInputBox(nome, id) {
         const box = document.createElement("div");
         box.className = "box-giocatore";
@@ -159,36 +167,28 @@ document.getElementById("inizia-gioco").addEventListener("click", () => {
     container.appendChild(box2);
     area.appendChild(container);
 
-    // Contenitore sequenza
     const sequenzaDiv = document.createElement("div");
     sequenzaDiv.className = "fib-container";
     sequenzaDiv.id = "fib-container";
     area.appendChild(sequenzaDiv);
 
-    // Funzione smooth per mostrare la sequenza
-    function mostraSequenza() {
+    function mostraSequenza() { // stampa la sequenza con effetto smooth
         const div = document.getElementById("fib-container");
-        div.innerHTML = '';
+        div.innerHTML = "";
 
-        sequenza.forEach((num, index) => {
+        sequenza.forEach((num, i) => {
             const span = document.createElement("span");
             span.textContent = num;
             span.classList.add("fib-num");
             div.appendChild(span);
 
-            setTimeout(() => {
-                span.classList.add("show");
-            }, index * 300);
+            setTimeout(() => span.classList.add("show"), i * 250);
         });
     }
 
     mostraSequenza();
 
-    // All'inizio attivo box1
-    attivaTurno(1);
-    startTimer();
-
-    // Funzione turnazione (questa resta identica)
+    // ===== GESTIONE TURNI =====
     function attivaTurno(n) {
         if (n === 1) {
             box1.classList.add("turno-attivo");
@@ -197,9 +197,7 @@ document.getElementById("inizia-gioco").addEventListener("click", () => {
             box1.querySelector("button").disabled = false;
             box2.querySelector("input").disabled = true;
             box2.querySelector("button").disabled = true;
-
             box1.querySelector("input").focus();
-
         } else {
             box2.classList.add("turno-attivo");
             box1.classList.remove("turno-attivo");
@@ -207,14 +205,11 @@ document.getElementById("inizia-gioco").addEventListener("click", () => {
             box2.querySelector("button").disabled = false;
             box1.querySelector("input").disabled = true;
             box1.querySelector("button").disabled = true;
-
             box2.querySelector("input").focus();
         }
     }
 
-    // Logica dei controlli (stessa logica, ma usa nextAtteso)
     function controlla(box, nome) {
-
         if (gameOver) return;
 
         const input = box.querySelector("input");
@@ -226,34 +221,30 @@ document.getElementById("inizia-gioco").addEventListener("click", () => {
             return;
         }
 
-        if (numero === nextAtteso) {
-            // risposta corretta
-            sequenza.push(numero);
-            mostraSequenza();
+        if (numero === nextAtteso) { // risposta corretta
+            sequenza.push(numero);   // aggiorna sequenza
+            mostraSequenza();        // aggiorna UI
 
-            // aggiorna il prossimo numero atteso
+            // calcola il nuovo numero atteso
             nextAtteso = sequenza[sequenza.length - 1] + sequenza[sequenza.length - 2];
 
-            // cambio turno
+            // passa il turno
             turno = turno === 1 ? 2 : 1;
+            const prossimo = turno === 1 ? nome1 : nome2;
+
             msg.style.color = "#406241";
+            msg.textContent = `${prossimo}, tocca a te!`;
 
-            const prossimoNome = turno === 1 ? nome1 : nome2;
-            msg.textContent = `${prossimoNome}, tocca a te!`;
-
-            attivaTurno(turno);
-            startTimer(); // riparte da 30
-
+            attivaTurno(turno);       // attiva l'altro box
+            avviaTimerNuovoTurno();   // resetta il timer a 30s per il nuovo turno
         } else {
-            // risposta sbagliata
-            finePartitaErrore(nome);
+            finePartitaErrore(nome);  // risposta sbagliata → fine
         }
 
         input.value = "";
         input.focus();
     }
 
-    // Eventi dei due bottoni (come prima)
     const input1 = box1.querySelector("input");
     const input2 = box2.querySelector("input");
     const btn1 = box1.querySelector("button");
@@ -262,7 +253,6 @@ document.getElementById("inizia-gioco").addEventListener("click", () => {
     btn1.addEventListener("click", () => controlla(box1, nome1));
     btn2.addEventListener("click", () => controlla(box2, nome2));
 
-    // ENTER = click sul proprio bottone
     input1.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
             e.preventDefault();
@@ -277,4 +267,7 @@ document.getElementById("inizia-gioco").addEventListener("click", () => {
         }
     });
 
-});
+    // AVVIO PRIMO TURNO
+    attivaTurno(1);
+    avviaTimerNuovoTurno();
+};
