@@ -10,7 +10,7 @@ document.getElementById('fib-calc').addEventListener('click', () => {
         }
 
         if (isNaN(n) || n > 100) {
-                    alert('Inserisci un numero valido maggiore di 0');
+                    alert('Inserisci un numero valido minore di 0');
                     return;
                 }
 

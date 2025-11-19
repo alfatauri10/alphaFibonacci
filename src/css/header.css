@@ -5,12 +5,12 @@
     box-sizing: border-box;
 }
 
-/* --- HEADER GENERALE --- */
+/* === HEADER === */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 60px; /* più ampio su desktop */
+    padding: 25px 60px;
     background-color: #59152E;
     border-bottom: 2px solid #ccc;
 }
@@ -23,8 +23,8 @@ header {
 }
 
 .logo {
-    width: 85px;
-    height: 85px;
+    width: 300px;        /* scegli tu la larghezza */
+    height: auto;        /* mantiene le proporzioni corrette */
 }
 
 h1 {
@@ -50,7 +50,7 @@ h1 {
     transition: all 0.3s ease;
 }
 
-/* Effetto hover */
+/* Hover underline */
 .menu a::after {
     content: "";
     position: absolute;
@@ -70,51 +70,47 @@ h1 {
     color: #ebd3b0;
 }
 
-/* --- RESPONSIVE --- */
+/* ===========================
+   RESPONSIVE MOBILE
+=========================== */
 @media (max-width: 700px) {
+
     header {
         flex-direction: column;
-        align-items: stretch;
-        text-align: center;
-        padding: 10px 25px; /* meno alto */
-        position: relative;
-    }
-
-    /* --- Struttura a 2 righe: logo+titolo sopra, menu sotto --- */
-    .logo-titolo {
-        display: flex;
         justify-content: center;
         align-items: center;
-        position: relative;
-        margin-bottom: 10px;
-    }
-
-    /* Logo a sinistra, centrato verticalmente */
-    .logo-titolo .logo {
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-30%);
-        width: 70px;
-        height: 70px;
-         margin-left: -10px; /* 🔹 sposta leggermente più a sinistra */
-    }
-
-    .logo-titolo h1 {
-        flex: 1;
-        font-size: 1.8rem;
+        padding: 20px 25px;
+        gap: 15px;
         text-align: center;
     }
 
-    /* Menu sotto, più compatto */
+    /* LOGO + TITOLO: CENTRATI */
+    .logo-titolo {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo {
+        width: 200px;        /* scegli tu la larghezza */
+        height: auto;        /* mantiene le proporzioni corrette */
+    }
+
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    /* MENU: SOTTO, COMPATTO E CENTRATO */
     .menu {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 25px; /* meno spazio tra le voci */
+        gap: 25px;
     }
 
     .menu a {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 }

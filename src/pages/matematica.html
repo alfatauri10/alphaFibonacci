@@ -1,43 +1,102 @@
 <div class="titolo-sezioneMate" id="matematica">
     <h2>Matematica</h2>
 </div>
-
 <div class="rettangolo-sezione">
-    <!-- Terzo blocco: testo (sinistra) --- immagine (destra) -->
-    <!-- per mantenere l'effetto a scacchiera rispetto ai blocchi sopra, qui ricomincio con testo a sinistra -->
+
+    <!-- Primo blocco: testo + immagine -->
     <div class="blocco">
-        <div class="contenuto-testo txt-left">
-            <h3>Approfondimenti matematici</h3>
+        <div class="contenuto-testo">
+            <h3>Matematica e bellezza</h3>
             <p>
-                La successione di Fibonacci è collegata al rapporto aureo e a molte proprietà
-                combinatorie e geometriche interessanti.La successione di Fibonacci è collegata al rapporto aureo e a molte proprietà
-                combinatorie e geometriche interessanti.La successione di Fibonacci è collegata al rapporto aureo e a molte proprietà
-                combinatorie e geometriche interessanti.La successione di Fibonacci è collegata al rapporto aureo e a molte proprietà
-                combinatorie e geometriche interessanti.
+                Osservando la Natura si scoprono espressioni d’eleganza e d’armonia: il tratto comune che definisce gli oggetti attraenti è generato da leggi matematiche.
+                Le forme sono il primo aspetto intuitivo della realtà che l’occhio umano percepisce.
+                Fin dall’antichità, gli studiosi hanno cercato di ricondurre la bellezza e la perfezione della natura a rapporti armonici. Ogni oggetto che compone l’Universo, infatti, tende all’equilibrio che si astrae in perfezione matematica, e tale tendenza contribuisce a delineare la bellezza di tutto ciò che ci circonda.
+                In particolare, sembra che la Natura “gradisca” particolarmente alcuni concetti matematici:
+            <ul>
+                <li>La successione di Fibonacci, introdotta a partire dal 1202 circa.</li>
+                <li>La sezione aurea, con radici nell’età greca.</li>
+                <li>I frattali, caratterizzati da omotetia interna e simmetria ad espansione.</li>
+            </ul>
             </p>
         </div>
-
-        <div class="contenuto-immagine img-right">
-            <img src="src/resources/img/img1.png" alt="Diagramma matematico">
+        <div class="contenuto-immagine">
+            <img src="src/resources/img/spirale.jpg" alt="Ritratto di Fibonacci">
         </div>
     </div>
 
-    <!-- Quarto blocco: immagine (sinistra) --- testo (destra) -->
+    <!-- Secondo blocco -->
     <div class="blocco">
-        <div class="contenuto-immagine img-left">
-            <img src="src/resources/img/img1.png" alt="Applicazioni della successione">
+        <div class="contenuto-immagine">
+            <img src="src/resources/img/2img.png" alt="Successione di Fibonacci">
         </div>
 
-        <div class="contenuto-testo txt-right">
-            <h3>Applicazioni</h3>
+        <div class="contenuto-testo">
+            <h3>La successione di Fibonacci</h3>
             <p>
-                LaLa successione di Fibonacci è collegata al rapporto aureo e a molte proprietà
-                combinatorie e geometriche interessanti.La successione di Fibonacci è collegata al rapporto aureo e a molte proprietà
-                combinatorie e geometriche interessanti.La successione di Fibonacci è collegata al rapporto aureo e a molte proprietà
-                combinatorie e geometriche interessanti. successione appare in natura, in algoritmi e in applicazioni grafiche: è uno strumento molto versatile.
+                La successione si compone di una serie di numeri nella quale ogni termine è la somma dei due precedenti.
+            </p>
+            <p>
+                <span class="formula">Fn = Fn−1 + Fn−2</span>
+            </p>
+            <p>
+                Alcune proprietà affascinanti:
+            <ul>
+                <li>Il rapporto tra numeri consecutivi tende al numero aureo (≈ 1,6180339...).</li>
+                <li>La somma dei quadrati di due numeri consecutivi della sequenza produce ancora un numero di Fibonacci.</li>
+                <li>La sequenza delle differenze tra due termini consecutivi genera nuovamente la sequenza originale.</li>
+                <li>Ogni terzo numero è multiplo di 2, ogni quarto è multiplo di 3, e così via.</li>
+            </ul>
             </p>
         </div>
     </div>
+
+    <!-- Terzo blocco -->
+    <div class="blocco">
+        <div class="contenuto-testo">
+            <h3>Rappresentazione Geometrica
+            </h3>
+            <p>
+                I numeri di Fibonacci hanno una rappresentazione geometrica
+                interessante e facile da realizzare. Generiamo una successione di quadrati i
+                cui lati sono numeri di Fibonacci successivi.
+                Cominciamo con due piccoli quadrati di lato 1, uno vicino all’altro; quindi,
+                sopra di questi tracciamo un quadrato di lato 2 (1+1).
+                Possiamo adesso tracciare un nuovo quadrato, che tocca sia il quadro di lato
+                1 che l’ultimo di lato 2 (che ha adesso lato 3); quindi un altro che tocca
+                entrambi i rettangoli di lati 2 e 3 (che ha adesso lato 5). Si può così continuare
+                aggiungendo quadrati attorno alla figura, ogni nuovo quadrato avente un
+                lato che ha una lunghezza pari alla somma dei lati dei due quadrati
+                più vicini.
+            </p>
+        </div>
+
+        <div class="contenuto-immagine">
+            <img src="src/resources/img/rettangolo.png" alt="Ritratto di Fibonacci">
+        </div>
+    </div>
+
+    <!-- quarto blocco -->
+    <div class="blocco">
+        <div class="contenuto-immagine">
+            <img src="src/resources/img/spiraleRett.png" alt="Successione di Fibonacci">
+        </div>
+
+        <div class="contenuto-testo">
+            <p>
+                Questo insieme di rettangoli i cui lati hanno lunghezze pari a numeri di
+                Fibonacci successivi e che sono composti da quadrati con lati che sono
+                numeri di Fibonacci sono chiamati Rettangoli di Fibonacci.
+
+                Abbiamo quindi costruito dei quadrati i cui lati sono uguali ai numeri di Fibonacci
+                successivi. Se in ogni quadrato si traccia un quarto di cerchio si ottiene una
+                spirale, detta spirale di Fibonacci.
+
+                Questa spirale è fatta di parti di circonferenza e quindi è un’approssimazione di una vera spirale logaritmica vera. Si può provare che tale spirale forma una linea dal centro che si incrementa di un fattore pari alla sezione aurea in ogni quadrato. Così i punti sulla spirale sono 1,618 volte distanti dal centro dopo un quarto di giro.
+            </p>
+        </div>
+    </div>
+
+
     <section class="sezione-matematica">
         <div class="sotto-sezione-matematica">
             <!-- Titolo -->
@@ -56,4 +115,6 @@
             <div id="fib-risultati"></div>
         </div>
     </section>
+
 </div>
+

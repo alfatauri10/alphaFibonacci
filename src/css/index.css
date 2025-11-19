@@ -1,142 +1,168 @@
+/* ===========================
+   GENERALE
+=========================== */
 body {
-  background-color: #FFFDF7; /* sfondo chiaro pagina */
+    background-color: #FFFDF7;
 }
 
-/* --- Titolo sezione --- */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===========================
+   TITOLI SEZIONI
+=========================== */
 .titolo-sezioneVita,
 .titolo-sezioneMate {
-  text-align: center; /* centra orizzontalmente */
-  margin-top: 40px;   /* distanza dall’header */
+    text-align: center;
+    margin-top: 40px;
 }
 
 .titolo-sezioneVita h2,
 .titolo-sezioneMate h2 {
-  display: inline-block;
-  font-family: 'Poppins', sans-serif;
-  font-size: 2.2rem;
-  color: #59152E;
-  position: relative;
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2rem;
+    color: #59152E;
+    position: relative;
 }
 
-/* linee decorative sotto i titoli */
 .titolo-sezioneVita h2::after {
-  content: "";
-  display: block;
-  width: 20px;
-  height: 3px;
-  background-color: #59152E;
-  margin: 8px auto 0 auto;
-  border-radius: 2px;
+    content: "";
+    display: block;
+    width: 20px;
+    height: 3px;
+    background-color: #59152E;
+    margin: 8px auto 0;
+    border-radius: 2px;
 }
+
 .titolo-sezioneMate h2::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 3px;
-  background-color: #59152E;
-  margin: 8px auto 0 auto;
-  border-radius: 2px;
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #59152E;
+    margin: 8px auto 0;
+    border-radius: 2px;
 }
 
-/* --- Responsive titolo --- */
+/* Responsive titolo */
 @media (max-width: 700px) {
-  .titolo-sezioneVita h2,
-  .titolo-sezioneMate h2 { font-size: 1.8rem; }
-  .titolo-sezioneVita h2::after,
-  .titolo-sezioneMate h2::after { width: 15px; height: 2.5px; }
+    .titolo-sezioneVita h2,
+    .titolo-sezioneMate h2 { font-size: 1.8rem; }
+    .titolo-sezioneVita h2::after,
+    .titolo-sezioneMate h2::after { width: 15px; height: 2.5px; }
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-/* --- Rettangolo sezione --- */
+/* ===========================
+   RETTANGOLO SEZIONE
+=========================== */
 .rettangolo-sezione {
-  background-color: #FFF5E9;
-  border-radius: 20px;
-  padding: 50px 40px;
-  width: 90%;
-  margin: 30px auto 80px auto;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  font-family: 'Poppins', sans-serif;
-  transition: all 0.3s ease;
+    background-color: #FFF5E9;
+    border-radius: 20px;
+    padding: 50px 40px;
+    width: 90%;
+    margin: 30px auto 80px auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
 }
 
-/* --- Blocchi interni testo+immagine --- */
+/* ===========================
+   BLOCCHI TESTO + IMMAGINE
+=========================== */
 .blocco {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  margin-bottom: 50px;
-  flex-wrap: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 60px;
 }
 
-/* --- NUOVE CLASSI A SCACCHIERA --- */
-/* Testo a sinistra */
-.txt-left { order: 0; flex: 1 1 40%; }
+/* Contenitori */
+.contenuto-testo,
+.contenuto-immagine {
+    flex: 1 1 50%;
+}
 
-/* Immagine a destra */
-.img-right { order: 1; flex: 1 1 40%; }
+/* ===========================
+   SCACCHIERA AUTOMATICA (Desktop)
+=========================== */
+/* Blocchi dispari: testo sinistra, immagine destra */
+.blocco:nth-child(odd) .contenuto-testo { order: 0; }
+.blocco:nth-child(odd) .contenuto-immagine { order: 1; }
 
-/* Testo a destra */
-.txt-right { order: 1; flex: 1 1 40%; }
+/* Blocchi pari: immagine sinistra, testo destra */
+.blocco:nth-child(even) .contenuto-testo { order: 1; }
+.blocco:nth-child(even) .contenuto-immagine { order: 0; }
 
-/* Immagine a sinistra */
-.img-left { order: 0; flex: 1 1 40%; }
-
-/* --- CONTENUTI TESTO --- */
+/* ===========================
+   CONTENUTI TESTO
+=========================== */
 .contenuto-testo {
-  color: #59152E;
+    color: #59152E;
 }
+
 .contenuto-testo h3 {
-  font-size: 2rem;
-  margin-bottom: 12px;
+    font-size: 2rem;
+    margin-bottom: 12px;
 }
+
 .contenuto-testo p {
-  font-size: 1.1rem;
-  line-height: 1.8;
+    font-size: 1.1rem;
+    line-height: 1.8;
 }
 
-/* --- CONTENUTI IMMAGINE --- */
+/* ===========================
+   CONTENUTI IMMAGINE
+=========================== */
 .contenuto-immagine img {
-  width: 100%;
-  height: auto;
-  border-radius: 18px;
-  object-fit: cover;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    width: 80% ;
+    height: auto;
+    border-radius: 18px;
+    object-fit: cover;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    display: block;        /* necessario */
+    margin: 0 auto;        /* centra orizzontalmente */
 }
 
-/* --- RESPONSIVE --- */
+/* ===========================
+   RESPONSIVE MOBILE
+=========================== */
 @media (max-width: 768px) {
-  .blocco {
-    flex-direction: column;
-    text-align: center;
-    flex-wrap: wrap;
-  }
 
-  /* Su mobile: testo sopra, immagine sotto */
-  .contenuto-testo,
-  .contenuto-immagine {
-    order: unset !important;
-    flex: 1 1 100%;
-  }
+    .blocco {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
 
-  .contenuto-immagine {
-    max-width: 420px;
-    margin: 0 auto;
-  }
+    /* Ordine fisso: TESTO sopra, IMMAGINE sotto */
+    .contenuto-testo {
+        order: 0 !important;
+        width: 100%;
+    }
 
-  .contenuto-testo h3 {
-    font-size: 1.7rem;
-  }
+    .contenuto-immagine {
+        order: 1 !important;
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+    }
 
-  .contenuto-testo p {
-    font-size: 1.05rem;
-  }
+    .contenuto-testo h3 {
+        font-size: 1.7rem;
+    }
+
+    .contenuto-testo p {
+        font-size: 1.10rem;
+    }
 }
 
-/* --- SEZIONE MATEMATICA --- */
+/* ===========================
+   SEZIONE MATEMATICA
+=========================== */
 .sezione-matematica {
     background-color: #FFF6E9;
     border-radius: 20px;
@@ -145,24 +171,20 @@ html {
     width: 90%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* spinge la sotto-sezione in fondo */
+    justify-content: space-between;
     box-sizing: border-box;
     position: relative;
-    margin-bottom: top; /* spinge il blocco in fondo alla sezione */
 }
 
-/* --- SOTTO-SEZIONE DELLA SEZIONE MATEMATICA --- */
 .sotto-sezione-matematica {
     background-color: #E0CCC6;
     border-radius: 15px;
-    width: calc(100% + 18%); /* 5px più piccola orizzontalmente */
-    align-self: center; /* la centra orizzontalmente */
+    width: calc(100% + 18%);
+    align-self: center;
     box-sizing: border-box;
     padding: 20px;
-    margin-bottom: top; /* spinge il blocco in fondo alla sezione */
 }
 
-/* Titolo */
 .fib-titolo {
     text-align: center;
     color: #5C1830;
@@ -170,7 +192,6 @@ html {
     margin-bottom: 20px;
 }
 
-/* Container input */
 .fib-input-container {
     display: flex;
     justify-content: center;
@@ -192,10 +213,9 @@ html {
     font-size: 1rem;
 }
 
-/* Bottone calcola */
 #fib-calc {
     display: block;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 20px;
     padding: 10px 20px;
     background-color: #AC4D6E;
     color: white;
@@ -203,14 +223,13 @@ html {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: 0.3s ease;
 }
 
 #fib-calc:hover {
     background-color: #9b3f60;
 }
 
-/* Risultati Fibonacci */
 #fib-risultati {
     display: flex;
     flex-wrap: wrap;
@@ -227,7 +246,7 @@ html {
     color: #5C1830;
     opacity: 0;
     transform: translateY(10px);
-    transition: all 0.5s ease;
+    transition: 0.5s ease;
 }
 
 .fib-num.show {
@@ -235,7 +254,9 @@ html {
     transform: translateY(0);
 }
 
-/* --- SEZIONE MINI-GIOCHI --- */
+/* ===========================
+   MINI-GIOCHI
+=========================== */
 .mini-giochi-container {
     display: flex;
     justify-content: center;
@@ -245,7 +266,6 @@ html {
     margin-top: 30px;
 }
 
-/* Ogni quadrato */
 .mini-gioco {
     background-color: #E0CCC6;
     border-radius: 25px;
@@ -257,7 +277,7 @@ html {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: 0.3s ease;
 }
 
 .mini-gioco:hover {
@@ -265,14 +285,12 @@ html {
     box-shadow: 0 12px 25px rgba(0,0,0,0.25);
 }
 
-/* Titolo */
 .mini-titolo {
     color: #5C1830;
     font-size: 1.8rem;
     text-align: center;
 }
 
-/* Descrizione */
 .mini-descrizione {
     color: #406241;
     font-size: 1.15rem;
@@ -281,7 +299,6 @@ html {
     margin: 20px 0;
 }
 
-/* Bottone */
 .mini-bottone {
     background-color: #AC4D6E;
     color: white;
@@ -290,14 +307,14 @@ html {
     padding: 12px 24px;
     font-size: 1.1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: 0.3s ease;
+    text-decoration: none;
 }
 
 .mini-bottone:hover {
     background-color: #9b3f60;
 }
 
-/* --- Responsive --- */
 @media (max-width: 768px) {
     .mini-gioco {
         width: 95%;
@@ -306,11 +323,13 @@ html {
     }
 
     .mini-titolo { font-size: 1.5rem; }
-    .mini-descrizione { font-size: 1rem; }
+    .mini-descrizione { font-size: 1.1rem; }
     .mini-bottone { font-size: 1rem; }
 }
 
-
+/* ===========================
+   GIOCO INDOVINA SEQUENZA
+=========================== */
 .gioco-indovina-container {
     display: flex;
     justify-content: space-between;
@@ -372,17 +391,54 @@ html {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.fib-num {
-  opacity: 0;
-  margin: 0 4px;
-  display: inline-block;
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-  transform: translateY(10px);
-  font-weight: bold;
-  color: #5C1830;
+.formula {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 6px 12px;
+    background: #FFFDF7;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #5C1830;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+ul {
+    color: #5C1830;
+    margin-top: 10px;
+    padding-left: 20px;
 }
 
-.fib-num.show {
-  opacity: 1;
-  transform: translateY(0);
+
+ul li {
+    font-size: 1.1rem;
+    color: #5C1830;
+    margin-bottom: 6px;
+    line-height: 1.6;
+}
+
+.blocco {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 50px;
+}
+
+/* Contenitore immagine */
+.contenuto-immagine {
+    flex: 1 1 40%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Tutte le immagini: stessa logica, massimo in verticale */
+.contenuto-immagine img {
+    width: 100%;
+    max-height: 300px;   /* <-- altezza massima uniforme */
+    object-fit: contain; /* <-- NON taglia, mantiene le proporzioni */
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+
+/* Testo più grande dell'immagine → prende lo spazio rimanente */
+.contenuto-testo {
+    flex: 1 1 60%;
 }

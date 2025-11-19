@@ -14,17 +14,21 @@
         <button data-dir="orario" class="btn-orientamento">Orario</button>
     </div>
 
-    <!-- AREA DI GIOCO -->
-    <div id="canvas-gioco">
+    <!-- WRAPPER RESPONSIVE -->
+    <div id="canvas-wrapper">
 
-        <!-- SVG per la spirale aurea, sopra ai quadrati -->
-        <svg id="spirale-svg" width="800" height="500"></svg>
+        <!-- AREA DI GIOCO (800×500 logici) -->
+        <div id="canvas-gioco">
 
-        <div id="q1" class="square s1" draggable="true">1</div>
-        <div id="q2" class="square s2" draggable="true">1</div>
-        <div id="q3" class="square s3" draggable="true">2</div>
-        <div id="q4" class="square s4" draggable="true">3</div>
-        <div id="q5" class="square s5" draggable="true">5</div>
+            <svg id="spirale-svg" width="800" height="500"></svg>
+
+            <div id="q1" class="square s1" draggable="true">1</div>
+            <div id="q2" class="square s2" draggable="true">1</div>
+            <div id="q3" class="square s3" draggable="true">2</div>
+            <div id="q4" class="square s4" draggable="true">3</div>
+            <div id="q5" class="square s5" draggable="true">5</div>
+
+        </div>
     </div>
 
     <button id="btn-reset-gioco" class="btn-stile-gioco">RICOMINCIA</button>
