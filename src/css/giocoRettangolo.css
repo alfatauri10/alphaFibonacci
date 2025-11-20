@@ -3,16 +3,14 @@
 ================================ */
 
 #gioco-rettangolo {
-    margin-top: 30px;
+    margin: 30px auto 80px auto;
     text-align: center;
     background-color: #FFF5E9;
     border-radius: 20px;
     padding: 50px 40px;
     width: 90%;
-    margin: 30px auto 80px auto;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     font-family: 'Poppins', sans-serif;
-    transition: all 0.3s ease;
 }
 
 .titolo-gioco {
@@ -24,69 +22,62 @@
 .istruzioni {
     font-size: 1rem;
     color: #7a573b;
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto;
     max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 /* ================================
    WRAPPER RESPONSIVE
-   Manteniamo canvas logico 800x500
-   e lo scaliamo in base allo schermo
 ================================ */
+
 #canvas-wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
     overflow: hidden;
-    height: auto; /* altezza di progetto, viene scalata */
 }
 
-/* scala uniforme mantenendo proporzioni */
+/* Scala proporzionale */
 @media (max-width: 1100px) {
     #canvas-wrapper {
         transform: scale(0.9);
-        transform-origin: top center;
         height: calc(500px * 0.9);
+        transform-origin: top center;
     }
 }
-
 @media (max-width: 900px) {
     #canvas-wrapper {
         transform: scale(0.8);
-        transform-origin: top center;
         height: calc(500px * 0.8);
+        transform-origin: top center;
     }
 }
-
 @media (max-width: 750px) {
     #canvas-wrapper {
         transform: scale(0.7);
-        transform-origin: top center;
         height: calc(500px * 0.7);
+        transform-origin: top center;
     }
 }
-
 @media (max-width: 600px) {
     #canvas-wrapper {
         transform: scale(0.6);
-        transform-origin: top center;
         height: calc(500px * 0.6);
+        transform-origin: top center;
     }
 }
-
 @media (max-width: 480px) {
     #canvas-wrapper {
         transform: scale(0.5);
-        transform-origin: top center;
         height: calc(500px * 0.5);
+        transform-origin: top center;
     }
 }
 
 /* ================================
-   AREA DI GIOCO (sistema 800x500)
+   AREA DI GIOCO 800x500
 ================================ */
+
 #canvas-gioco {
     position: relative;
     width: 800px;
@@ -97,7 +88,7 @@
     overflow: hidden;
 }
 
-/* SVG spirale */
+/* Spirale SVG */
 #spirale-svg {
     position: absolute;
     top: 0;
@@ -110,8 +101,9 @@
 }
 
 /* ================================
-   QUADRATI TRASCINABILI (dimensioni logiche)
+   QUADRATI TRASCINABILI
 ================================ */
+
 .square {
     position: absolute;
     display: flex;
@@ -127,13 +119,12 @@
     transition: opacity 0.3s ease, transform 0.2s ease;
 }
 
-/* Effetto durante il drag */
 .square:active {
     cursor: grabbing;
     transform: scale(1.05);
 }
 
-/* Quadrati (scala logica: 1→50, 2→50, 3→100, 4→150, 5→250) */
+/* Quadrati (logici) */
 .s1 { width: 50px;  height: 50px;  background: #a76f6f; top: 20px; left: 20px;   z-index: 5; }
 .s2 { width: 50px;  height: 50px;  background: #b97f45; top: 20px; left: 120px; z-index: 4; opacity: .4; }
 .s3 { width: 100px; height: 100px; background: #c4a962; top: 20px; left: 220px; z-index: 3; opacity: .4; }
@@ -151,14 +142,15 @@
 }
 
 .square.reposition {
+    border: 3px dashed #4e7c48 !important;
     cursor: move !important;
     opacity: 1 !important;
-    border: 3px dashed #4e7c48 !important;
 }
 
 /* ================================
    MESSAGGIO DI STATO
 ================================ */
+
 #msg {
     margin-top: 15px;
     font-weight: 600;
@@ -166,41 +158,42 @@
     font-size: 1.1rem;
     min-height: 24px;
 }
+
 #msg.success { color: #4e7c48; }
 #msg.error   { color: #b64848; }
 
 /* ================================
    ORIENTAMENTO
 ================================ */
+
 #orientamento {
     margin: 15px 0;
 }
-.btn-orientamento {
-    background: #AC4D6E;
-    color: white;
-    padding: 10px 18px;
-    border-radius: 8px;
-    border: none;
-    margin: 0 10px;
-    cursor: pointer;
-}
 
-/* ================================
-   BOTTONI
-================================ */
+.btn-orientamento,
 .btn-stile-gioco {
     background: #AC4D6E;
     color: white;
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Differenze stile */
+.btn-orientamento {
+    padding: 10px 18px;
+    border-radius: 8px;
+    margin: 0 10px;
+}
+
+.btn-stile-gioco {
     padding: 12px 24px;
     border-radius: 10px;
-    border: none;
-    font-family: 'Poppins', sans-serif;
     font-size: 1rem;
-    cursor: pointer;
     font-weight: 600;
     box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-    transition: all 0.2s ease;
     margin-top: 15px;
+    transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .btn-stile-gioco:hover {

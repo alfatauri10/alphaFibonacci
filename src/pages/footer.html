@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="src/css/footer.css">
+
+<footer id="footer">
+    <div class="footer-content">
+
+        <!-- Logo sinistra -->
+        <div class="footer-logo">
+            <img src="src/resources/img/logo-footer.png" alt="Logo αFibonacci">
+        </div>
+
+        <!-- Email centro -->
+        <div class="footer-mail">
+            <a href="mailto:tuaemail@example.com">tuaemail@example.com</a>
+        </div>
+
+        <!-- Copyright destra -->
+        <div class="footer-copy">
+            <p>© 2025 αFibonacci</p>
+        </div>
+
+    </div>
+</footer>
+
+<script>
+    const footer = document.getElementById("footer");
+
+    window.addEventListener("scroll", () => {
+        const scrollBottom = window.innerHeight + window.scrollY;
+        const pageHeight = document.body.offsetHeight;
+
+        if (scrollBottom >= pageHeight - 5) {
+            footer.style.display = "flex";
+        } else {
+            footer.style.display = "none";
+        }
+    });
+</script>

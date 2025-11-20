@@ -125,11 +125,13 @@ document.getElementById("inizia-gioco").onclick = () => { // avvia il gioco al c
     titolo.style.color = "#5C1830";
     titolo.style.textAlign = "center";
     titolo.style.marginBottom = "10px";
+    titolo.style.fontSize = "1.5rem";
     titolo.textContent = `${nome1} VS ${nome2}`;
     area.appendChild(titolo);
 
     const msg = document.createElement("p");
     msg.style.color = "#406241";
+    msg.style.fontSize = "1.3rem";
     msg.textContent = `${nome1} inizia! Inserisci il prossimo numero:`;
     area.appendChild(msg);
 

@@ -1,0 +1,79 @@
+/* ===========================
+       FOOTER BASE
+=========================== */
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    background-color: #59152E;
+    border-top: 2px solid #ccc;
+
+    padding: 18px 40px;
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(100%);
+    transition: all 0.4s ease;
+    z-index: 300;
+}
+
+/* Mostra il footer quando si arriva in fondo */
+#footer.show-footer {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo img {
+    height: 50px;
+    width: auto;
+}
+
+.footer-mail a {
+    text-decoration: none;
+    color: #FFF6E9;
+    font-size: 1.4rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-copy p {
+    color: #FFF6E9;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+}
+
+/* ===========================
+       RESPONSIVE
+=========================== */
+@media (max-width: 700px) {
+
+    #footer {
+        padding: 15px 20px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .footer-logo img {
+        height: 40px;
+    }
+
+    .footer-mail a {
+        font-size: 1.1rem;
+    }
+
+    .footer-copy p {
+        font-size: 1rem;
+    }
+}
