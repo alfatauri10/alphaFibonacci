@@ -31,5 +31,13 @@
         <script src="src/js/showHideGiochi.js"></script>
 
 
+        <p style="text-align:center; margin:30px 0;">
+            <a href="https://youtu.be/dc2Trot4H20?si=Cd7dXm6KmEgXfLrM"
+               target="_blank"
+               style="font-size:1.2rem; text-decoration:none; color:#59152E; font-weight:600;">
+                🎬 Guarda il video su YouTube
+            </a>
+        </p>
+
     </body>
 </html>
